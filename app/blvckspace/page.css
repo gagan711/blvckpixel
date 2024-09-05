@@ -1,0 +1,159 @@
+/* styles.css */
+
+.page-container {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 45px !important;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 60px;
+  position: relative;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  border-radius: 0;
+  overflow: hidden;
+  cursor: pointer;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s ease;
+  background-color: black;
+  color: #fff;
+  background-image: none !important;
+
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card.expanded:hover{
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  transition: opacity 0.3s ease;
+  opacity: 1;
+}
+
+.card:hover .card-overlay {
+  opacity: 1;
+}
+
+.card-title {
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+.card-content {
+  font-size: 14px;
+  line-height: 1.3;
+  color: #fff;
+}
+
+.card.expanded {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100vh;
+  z-index: 999;
+  cursor: initial;
+  /* transition: transform 0.3s ease; */
+  overflow: hidden;
+  animation: popOutAnimation 0.5s ease forwards;
+  transform: translate(-50%, -50%) !important;
+  filter: blur(0);
+}
+
+.card.expanded .card-content {
+  width: 100%;
+  height: 100%;
+}
+
+.card.expanded .overlay {
+  opacity: 1;
+}
+
+.card {
+  transform: scale(1); /* Start with a slightly smaller size */
+  transition: transform 0.3s ease, filter 0.3s ease; /* Smooth transitions for scaling and filter */
+  filter: blur(4px); /* Apply a blur effect when active */
+}
+
+.card.active {
+  transform: scale(1); /* Zoom in to full size for active state */
+  filter: blur(0px); /* Apply a blur effect when active */
+}
+
+.card.category{
+  filter: blur(0) !important;
+}
+
+.backToMain{
+  position: fixed;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: black;
+}
+
+@media (max-width: 768px) {
+  .card-container {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+  }
+
+  .page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px;
+  }
+
+  
+  .card.expanded {
+    width: 80vw;
+    height: 90vh;
+    position: fixed;
+    z-index: 99969;
+  }
+
+  .backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255); /* Semi-transparent black */
+    z-index: -1; /* Ensure backdrop appears above other content */
+    display: none; /* Initially hidden */
+  }
+  
+  /* CSS to show backdrop when card is expanded */
+  .card.expanded ~ .backdrop {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  
+}

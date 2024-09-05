@@ -1,0 +1,250 @@
+body{
+  overflow-y: hidden;
+}
+.swiper{
+  height: 100vh;
+}
+
+.swiper-wrapper{
+  height: 100%;
+}
+
+.swiper-wrapper .slide{
+  height: 100%;
+  justify-content: flex-start;
+  display: flex;
+  align-items: end;
+  padding: 45px;
+}
+
+.menu-items {
+  position: fixed;
+  top: 10vh;
+  right: -2vw;
+  width: 200px;
+  height: 85px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  z-index: 999999;
+  transition: top 0.3s ease;
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+  right: 15px;
+}
+
+.menu-items::-webkit-scrollbar {
+  display: none;
+}
+
+
+.menu-items a {
+  font-family: 'HelveticaNeueCyr-Light';
+  font-size: 11px;
+  text-align: center;
+  color: #000000;
+  margin: 0 0 2%;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 8px;
+  transition: all 0.3s ease;
+}
+
+.menu-items a.active {
+  color: #000000 !important;
+  font-family: 'HelveticaNeueCyr-Roman';
+  font-size: 16px;
+  position: relative;
+  text-align: center;
+}
+
+.menu-items a.active::after {
+  content: '[';
+  position: absolute;
+  left: 0;
+}
+
+.menu-items a.active::before {
+  content: ']';
+  position: absolute;
+  right: 0;
+}
+
+.header{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  left: 0;
+  z-index: 9;
+  display: flex;
+  justify-content: end;
+  padding: 15px 35px;
+}
+
+.header a{
+  font-size: 12px;
+  font-family: 'HelveticaNeueCyr-Light';
+  padding: 0 12px;
+  position: relative;
+  color: #000000;
+}
+
+.header a::after{
+  content: '';
+  position: absolute;
+  right: 0;
+  height: 60%;
+  width: 1px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #ffffff;
+}
+
+.header a:last-child:after{
+  display: none;
+}
+
+.footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  z-index: 9;
+  display: flex;
+  justify-content: end;
+  padding: 15px 35px;
+}
+
+.footer a{
+  font-size: 12px;
+  font-family: 'HelveticaNeueCyr-Light';
+  padding: 0 12px;
+  position: relative;
+  color: #000000;
+}
+
+.footer a::after{
+  content: '';
+  position: absolute;
+  right: 0;
+  height: 60%;
+  width: 1px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #ffffff;
+}
+
+.footer a:last-child:after{
+  display: none;
+}
+
+
+
+
+.move-left-up-animation {
+  animation: moveLeftUpAnimation 3s ease-in-out forwards;
+  /* display: flex;
+  flex-direction: column; */
+}
+
+@keyframes moveLeftUpAnimation {
+  0% {
+    transform: translateX(100px) translateY(50px);
+  }
+  50% {
+    transform: translateX(0) translateY(50px);
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+.move-left-up-animation h1{
+  position: relative;
+  padding: 0 10px;
+  display: inline-block;
+}
+
+.move-left-up-animation h1::after {
+  content: '[';
+  position: absolute;
+  top: 0;
+  transform: scaleX(0) translateY(-50%);
+  transform-origin: right;
+}
+
+.move-left-up-animation h1::before {
+  content: ']';
+  position: absolute;
+  top: 0;
+  transform: scaleX(0) translateX(-50%);
+  transform-origin: right;
+}
+
+.move-left-up-animation h1::before {
+  left: 100%;
+  animation: moveLeftAnimation 3s ease-in-out 0.2s forwards;
+}
+
+.move-left-up-animation h1::after {
+  left: 0;
+  animation: moveRightAnimation 3s ease-in-out 0.2s forwards;
+}
+
+
+.move-left-up-animation p{
+  opacity: 0;
+  animation: showParagraph  4s ease-in-out 0.5s forwards;
+}
+
+@keyframes showParagraph  {
+  to {
+    opacity: 1;
+  }
+}
+
+.brackets h1{
+  position: relative;
+  padding: 0 10px;
+  display: inline-block;
+}
+
+.brackets h1::after {
+  content: '[';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: scaleX(1) translateY(-50%);
+  transform-origin: right;
+  animation: none !important;
+}
+
+.brackets h1::before {
+  content: ']';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform:scaleX(1) translateY(-50%);
+  transform-origin: right;
+  animation: none !important;
+}
+
+
+
+
+.move-up-animation > * {
+  animation: moveUpAnimation 3s ease-in-out forwards;
+  opacity: 0;
+}
+
+@keyframes moveUpAnimation {
+  0% {
+    transform: translateY(25px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
